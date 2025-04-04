@@ -20,11 +20,6 @@ export default function Login() {
     theme: "dark",
   };
 
-  // useEffect(() => {
-  //   if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-  //     navigate("/");
-  //   }
-  // }, []);
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -54,12 +49,7 @@ export default function Login() {
         toast.error(response.data.message, toastOptions);
       }
       if (response.data.status === true) {
-        // localStorage.setItem(
-        //   process.env.REACT_APP_LOCALHOST_KEY,
-        //   JSON.stringify(data.user)
-        // );
-
-        navigate("/");
+        navigate("/setAvATAR");
       }
     }
   };

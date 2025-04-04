@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Register.css'
 import { Link, useNavigate } from "react-router-dom";
-import Login from './Login';
 import logo from "../assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,7 +48,7 @@ function Register() {
         toast.info("Redirecting...", toastOptions);
 
         setTimeout(() => {
-          navigate("/");
+          navigate("/setAvATAR");
         }, 2000);
       }
     }

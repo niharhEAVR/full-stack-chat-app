@@ -1,5 +1,6 @@
-const user = require("../model/userModel");
+const axios = require("axios");
 const bcrypt = require("bcrypt");
+const user = require("../model/userModel");
 
 module.exports.register = async (req, res, next) => {
 
@@ -65,3 +66,35 @@ module.exports.login = async (req, res, next) => {
     }
 
 };
+
+
+module.exports.avatar = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const response = await axios.get(`https://api.dicebear.com/8.x/bottts/svg?seed=${id}`);
+        res.send(response.data);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+};
+
+
+module.exports.setAvatar = async (req, res, next) => {
+    try {
+
+        const { userId } = req.params;
+        const avatarImage = req.body.image;
+        const userData = await user.findByIdAndUpdate(userId, {
+            isAvatarImageSet: true,
+            avatarImage,
+        },{new: true});
+
+        return res.json({
+            isSet: userData.isAvatarImageSet,
+            image: userData.avatarImage,
+        })
+
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
