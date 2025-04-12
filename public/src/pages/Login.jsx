@@ -48,9 +48,13 @@ export default function Login() {
       if (response.data.status === false) {
         toast.error(response.data.message, toastOptions);
       }
+
       if (response.data.status === true) {
-        navigate("/setAvATAR");
+        navigate("/");
       }
+      // if (response.data.status === true) {
+      //   navigate("/setAvATAR");
+      // }
     }
   };
 

@@ -48,8 +48,11 @@ function Register() {
         toast.info("Redirecting...", toastOptions);
 
         setTimeout(() => {
-          navigate("/setAvATAR");
+          navigate("/");
         }, 2000);
+        // setTimeout(() => {
+        //   navigate("/setAvATAR");
+        // }, 2000);
       }
     }
   };
