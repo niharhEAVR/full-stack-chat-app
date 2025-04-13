@@ -50,7 +50,13 @@ export default function Login() {
       }
 
       if (response.data.status === true) {
-        navigate("/");
+
+        localStorage.setItem("chat-app-user", JSON.stringify(response.data.usernameCheck));
+        toast.info("Redirecting...", toastOptions);
+
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       }
       // if (response.data.status === true) {
       //   navigate("/setAvATAR");

@@ -87,11 +87,25 @@ module.exports.setAvatar = async (req, res, next) => {
         const userData = await user.findByIdAndUpdate(userId, {
             isAvatarImageSet: true,
             avatarImage,
-        },{new: true});
+        }, { new: true });
 
         return res.json({
             isSet: userData.isAvatarImageSet,
             image: userData.avatarImage,
+        })
+
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+module.exports.getAllUsers = async (req, res, next) => {
+    try {
+
+        const users = await user.find({ _id: { $ne: req.params.id } }).select(["email", "useranme", "_id", "avatarImage"]);
+
+        return res.json({
+            users
         })
 
     } catch (error) {
