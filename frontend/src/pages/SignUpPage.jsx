@@ -1,15 +1,13 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/AuthImagePattern.jsx";
+
+import AuthImagePattern from "../components/AuthImagePattern";
 import toast from "react-hot-toast";
 
-
-function SignUpPage() {
-
-  const [showPass, setShowPass] = useState(false);
-
+const SignUpPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -26,17 +24,19 @@ function SignUpPage() {
     if (formData.password.length < 6) return toast.error("Password must be at least 6 characters");
 
     return true;
-  }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const success = validateForm();
 
-    if(success === true) signup(formData);
-  }
+    if (success === true) signup(formData);
+  };
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
+      {/* left side */}
       <div className="flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md space-y-8">
           {/* LOGO */}
@@ -65,7 +65,7 @@ function SignUpPage() {
                 <input
                   type="text"
                   className={`input input-bordered w-full pl-10`}
-                  placeholder="Oscar Wilde"
+                  placeholder="John Doe"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 />
@@ -83,7 +83,7 @@ function SignUpPage() {
                 <input
                   type="email"
                   className={`input input-bordered w-full pl-10`}
-                  placeholder="OscarWilde@gmail.com"
+                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -99,7 +99,7 @@ function SignUpPage() {
                   <Lock className="size-5 text-base-content/40" />
                 </div>
                 <input
-                  type={showPass ? "text" : "password"}
+                  type={showPassword ? "text" : "password"}
                   className={`input input-bordered w-full pl-10`}
                   placeholder="••••••••"
                   value={formData.password}
@@ -108,9 +108,9 @@ function SignUpPage() {
                 <button
                   type="button"
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPass(!showPass)}
+                  onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPass ? (
+                  {showPassword ? (
                     <EyeOff className="size-5 text-base-content/40" />
                   ) : (
                     <Eye className="size-5 text-base-content/40" />
@@ -142,14 +142,13 @@ function SignUpPage() {
         </div>
       </div>
 
+      {/* right side */}
 
       <AuthImagePattern
         title="Join our community"
-        subtitle="Your own personal chat app that is open-source, customizable to your preferences, and designed solely for chatting."
+        subtitle="Connect with friends, share moments, and stay in touch with your loved ones."
       />
-
     </div>
-  )
-}
-
-export default SignUpPage
+  );
+};
+export default SignUpPage;

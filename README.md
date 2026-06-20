@@ -1,36 +1,38 @@
-### Frotend code runner cmd:
+# ✨ Full Stack Realtime Chat App ✨
 
-```sh
-cd frotend
-npm install
-npm run dev
-```
+Highlights:
 
+- 🌟 Tech stack: MERN + Socket.io + TailwindCSS + Daisy UI
+- 🎃 Authentication && Authorization with JWT
+- 👾 Real-time messaging with Socket.io
+- 🚀 Online user status
+- 👌 Global state management with Zustand
+- 🐞 Error handling both on the server and on the client
+- ⭐ At the end Deployment like a pro for FREE!
+- ⏳ And much more!
 
-### Backend code runner cmd:
+### Setup .env file
 
-```sh
-cd backend
-npm install
-npm run dev 
-```
-
-
-
-### Things that contains inside the .env file
-
-```env
-MONGO_URL="mongodb+srv://<database-username>:<database-password>@<database-name>.mongodb.net/chatDB?retryWrites=true&w=majority&appName=Cluster0"
-
+```js
+MONGODB_URI=...
 PORT=5001
+JWT_SECRET=...
 
-JWT_SECRET=
-
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
 
 NODE_ENV=development
-NODE_ENV=production # for deployement time
+```
 
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+### Build the app
+
+```shell
+npm run build
+```
+
+### Start the app
+
+```shell
+npm start
 ```
